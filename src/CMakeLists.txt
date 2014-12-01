@@ -3,6 +3,7 @@ add_library (
     util/Time.cpp
     spi/Bus.cpp
     spi/Device.cpp
+    spi/driver/Mcp3008.cpp
     gpio/Pin.cpp
     gpio/Chip.cpp
 )
