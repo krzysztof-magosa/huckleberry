@@ -10,6 +10,7 @@ add_library (
     i2c/Device.cpp
     i2c/SmBus.cpp
     i2c/driver/Lcd.cpp
+    onewire/Base.cpp
 )
 
 target_link_libraries (huckleberry pthread)
