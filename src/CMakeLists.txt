@@ -9,6 +9,7 @@ add_library (
     i2c/Chip.cpp
     i2c/Device.cpp
     i2c/SmBus.cpp
+    i2c/driver/Lcd.cpp
 )
 
 target_link_libraries (huckleberry pthread)
