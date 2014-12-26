@@ -53,9 +53,13 @@ namespace huckleberry { namespace gpio {
 
         doExport();
         
-        directionFile.open(path + "/direction");
-        valueFile.open(path + "/value");
-        edgeFile.open(path + "/edge");
+        directionFile = new std::fstream();
+        valueFile = new std::fstream();
+        edgeFile = new std::fstream();
+
+        directionFile->open(path + "/direction");
+        valueFile->open(path + "/value");
+        edgeFile->open(path + "/edge");
 
         lastInterrupt = 0;
         interruptDebounce = 0;
@@ -70,41 +74,41 @@ namespace huckleberry { namespace gpio {
 
     void Pin::setDirection(Direction direction)
     {
-        directionFile << DIRECTION_MAP.toValue(direction) << std::endl;
+        *directionFile << DIRECTION_MAP.toValue(direction) << std::endl;
     }
 
     Pin::Direction Pin::getDirection(void)
     {
         std::string value;
-        getline(directionFile, value);
+        getline(*directionFile, value);
 
         return DIRECTION_MAP.fromValue(value);        
     }
 
     void Pin::setValue(Pin::Value value)
     {
-        valueFile << VALUE_MAP.toValue(value) << std::endl;
+        *valueFile << VALUE_MAP.toValue(value) << std::endl;
     }
 
     Pin::Value Pin::getValue(void)
     {
         std::string line;
-        valueFile.seekg(std::ios_base::beg);
-        getline(valueFile, line);
+        valueFile->seekg(std::ios_base::beg);
+        getline(*valueFile, line);
 
         return VALUE_MAP.fromValue(line);
     }
 
     void Pin::setEdge(Pin::Edge edge)
     {
-        edgeFile << EDGE_MAP.toValue(edge) << std::endl;
+        *edgeFile << EDGE_MAP.toValue(edge) << std::endl;
     }
 
     Pin::Edge Pin::getEdge(void)
     {
         std::string line;
-        valueFile.seekg(std::ios_base::beg);
-        getline(edgeFile, line);
+        valueFile->seekg(std::ios_base::beg);
+        getline(*edgeFile, line);
 
         return EDGE_MAP.fromValue(line);
     }

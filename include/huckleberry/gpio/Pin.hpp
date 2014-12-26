@@ -70,9 +70,9 @@ namespace huckleberry { namespace gpio {
         int number;
         Chip& chip;
         std::string path;
-        std::fstream directionFile;
-        std::fstream valueFile;
-        std::fstream edgeFile;
+        std::fstream *directionFile;
+        std::fstream *valueFile;
+        std::fstream *edgeFile;
         uint64_t interruptDebounce;
         uint64_t lastInterrupt;
         void doExport(void);
