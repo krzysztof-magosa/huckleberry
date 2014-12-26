@@ -15,3 +15,9 @@ add_library (
 )
 
 target_link_libraries (huckleberry pthread)
+
+install(TARGETS huckleberry
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+)
