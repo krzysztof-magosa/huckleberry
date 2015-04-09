@@ -90,7 +90,7 @@ namespace huckleberry { namespace spi {
 
     std::vector<uint8_t>* Device::transfer(std::vector<uint8_t> data)
     {
-        struct spi_ioc_transfer xfer;
+        struct spi_ioc_transfer xfer = {0};
         uint8_t* txBuf = (uint8_t*)malloc(data.size());
         uint8_t* rxBuf = (uint8_t*)malloc(data.size());
 
